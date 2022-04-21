@@ -68,7 +68,7 @@ function Subgraph(props) {
   );
 
   return (
-    <>
+    <div className="font-normal text-gray-900 dark:text-white">
       <div style={{ margin: 'auto', marginTop: 32 }}>
         You will find that parsing/tracking events with the{' '}
         <span className="highlight" style={highlight}>
@@ -88,7 +88,7 @@ function Subgraph(props) {
         ):
       </div>
 
-      <div style={{ margin: 32 }}>
+      <div style={{ marginTop: 32 }}>
         <span style={{ marginRight: 8 }}>⛓️</span>
         Make sure your local chain is running first:
         <span className="highlight" style={highlight}>
@@ -96,7 +96,7 @@ function Subgraph(props) {
         </span>
       </div>
 
-      <div style={{ margin: 32 }}>
+      <div style={{ marginTop: 32 }}>
         <span style={{ marginRight: 8 }}>🚮</span>
         Clean up previous data, if there is any:
         <span className="highlight" style={highlight}>
@@ -104,7 +104,7 @@ function Subgraph(props) {
         </span>
       </div>
 
-      <div style={{ margin: 32 }}>
+      <div style={{ marginTop: 32 }}>
         <span style={{ marginRight: 8 }}>📡</span>
         Spin up a local graph node by running
         <span className="highlight" style={highlight}>
@@ -121,7 +121,7 @@ function Subgraph(props) {
         </span>
       </div>
 
-      <div style={{ margin: 32 }}>
+      <div style={{ marginTop: 32 }}>
         <span style={{ marginRight: 8 }}>📝</span>
         Create your <b>local subgraph</b> by running
         <span className="highlight" style={highlight}>
@@ -130,7 +130,7 @@ function Subgraph(props) {
         (only required once!)
       </div>
 
-      <div style={{ margin: 32 }}>
+      <div style={{ marginTop: 32 }}>
         <span style={{ marginRight: 8 }}>🚢</span>
         Deploy your <b>local subgraph</b> by running
         <span className="highlight" style={highlight}>
@@ -138,7 +138,7 @@ function Subgraph(props) {
         </span>
       </div>
 
-      <div style={{ margin: 32 }}>
+      <div style={{ marginTop: 32 }}>
         <span style={{ marginRight: 8 }}>🖍️</span>
         Edit your <b>local subgraph</b> in
         <span className="highlight" style={highlight}>
@@ -151,7 +151,7 @@ function Subgraph(props) {
         )
       </div>
 
-      <div style={{ margin: 32 }}>
+      <div style={{ marginTop: 32 }}>
         <span style={{ marginRight: 8 }}>🤩</span>
         Deploy your <b>contracts and your subgraph</b> in one go by running
         <span className="highlight" style={highlight}>
@@ -160,7 +160,7 @@ function Subgraph(props) {
       </div>
 
       <div style={{ width: 780, margin: 'auto', paddingBottom: 64 }}>
-        <div style={{ margin: 32, textAlign: 'right' }}>
+        <div style={{ marginTop: 32, textAlign: 'right' }}>
           <Input
             onChange={e => {
               setNewPurpose(e.target.value);
@@ -183,13 +183,11 @@ function Subgraph(props) {
           <Typography>{loading ? 'Loading...' : deployWarning}</Typography>
         )}
 
-        <div style={{ margin: 32, height: 400, border: '1px solid #888888', textAlign: 'left' }}>
+        <div style={{ marginTop: 32, height: 400, border: '1px solid #888888', textAlign: 'left' }}>
           <GraphiQL fetcher={graphQLFetcher} docExplorerOpen query={EXAMPLE_GRAPHQL} />
         </div>
       </div>
-
-      <div style={{ padding: 64 }}>...</div>
-    </>
+    </div>
   );
 }
 

@@ -29,7 +29,7 @@ import externalContracts from './contracts/external_contracts';
 // contracts
 import deployedContracts from './contracts/hardhat_contracts.json';
 import { Transactor, Web3ModalSetup, classNames } from './helpers';
-import { Home, ExampleUI, Hints } from './views';
+import { Home, ExampleUI, Hints, Subgraph } from './views';
 import { useStaticJsonRPC } from './hooks';
 
 import { Dialog, Transition } from '@headlessui/react';
@@ -266,7 +266,6 @@ function App(props) {
     { name: 'MyGovernor', href: '/my-governor', icon: CodeIcon },
     { name: 'Hints', href: '/hints', icon: SparklesIcon },
     { name: 'ExampleUI', href: '/exampleui', icon: TemplateIcon },
-    { name: 'Mainnet DAI', href: '/mainnetdai', icon: CurrencyDollarIcon },
     { name: 'Subgraph', href: '/subgraph', icon: ShareIcon },
   ];
 
@@ -519,6 +518,14 @@ function App(props) {
                       writeContracts={writeContracts}
                       readContracts={readContracts}
                       purpose={purpose}
+                    />
+                  </Route>
+                  <Route path="/subgraph">
+                    <Subgraph
+                      subgraphUri={props.subgraphUri}
+                      tx={tx}
+                      writeContracts={writeContracts}
+                      mainnetProvider={mainnetProvider}
                     />
                   </Route>
                 </Switch>
