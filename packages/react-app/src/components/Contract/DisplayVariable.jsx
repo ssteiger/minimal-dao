@@ -42,8 +42,10 @@ const DisplayVariable = ({ contractFunction, functionInfo, refreshRequired, trig
           </div>
         </Col>
         <Col span={14}>
-          <div style={{}}>
-            <h2 style={{ marginTop: 3 }}>{tryToDisplay(variable, false, blockExplorer)}</h2>
+          <div>
+            <h2 className="text-gray-900 dark:text-white" style={{ marginTop: 3 }}>
+              {tryToDisplay(variable, false, blockExplorer)}
+            </h2>
           </div>
           <div style={{ float: 'left' }}>
             <button

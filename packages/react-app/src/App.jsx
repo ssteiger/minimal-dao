@@ -260,7 +260,7 @@ function App(props) {
 
   const navigation = [
     { name: 'Home', href: '/', icon: HomeIcon },
-    { name: 'Debug Contracts', href: '/debug', icon: CodeIcon },
+    //{ name: 'Debug Contracts', href: '/debug', icon: CodeIcon },
     { name: 'MyToken', href: '/my-token', icon: CodeIcon },
     { name: 'GovernanceTimeLock', href: '/governance-time-lock', icon: CodeIcon },
     { name: 'MyGovernor', href: '/my-governor', icon: CodeIcon },
@@ -399,7 +399,7 @@ function App(props) {
           </div>
         </div>
         <div className="md:pl-64 flex flex-col flex-1">
-          <div className="flex flex-col grow flex-1">
+          <div className="flex flex-col grow flex-1" style={{ overflowWrap: 'break-word' }}>
             {/* Top nav */}
             <div className="sticky top-0 z-10 flex flex-shrink-0 h-16 bg-white dark:bg-gray-800 shadow dark:shadow-gray-700">
               <button
@@ -433,7 +433,7 @@ function App(props) {
               </div>
             </div>
             {/* Page content */}
-            <div className="grow flex-1">
+            <div className="grow flex-1 bg-white dark:bg-gray-800 shadow dark:shadow-gray-700">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                 <Switch>
                   <Route exact path="/">
