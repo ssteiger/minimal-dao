@@ -255,7 +255,10 @@ export default function FunctionForm({ contractFunction, functionInfo, provider,
             fontSize: 24,
           }}
         >
-          <h2 className="inline-flex items-center px-3 py-0.5 rounded-full text-base font-normal bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-white">
+          <h2
+            style={{ marginRight: 15 }}
+            className="inline-flex items-center px-3 py-0.5 rounded-full text-base font-normal bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-white"
+          >
             {functionInfo.name}
           </h2>
         </Col>
