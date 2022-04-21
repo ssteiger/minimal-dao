@@ -28,5 +28,6 @@ $ yarn start
 
 ## Resoucres
 
+* [openzeppelin governance docs](https://docs.openzeppelin.com/contracts/4.x/api/governance)
 * [openzeppelin wizard](https://wizard.openzeppelin.com/)
 * [scaffold-eth](https://github.com/scaffold-eth/scaffold-eth)
