@@ -173,80 +173,74 @@ export default function FunctionForm({ contractFunction, functionInfo, provider,
     }
   };
 
+  const buttonAction = async () => {
+    const args = functionInfo.inputs.map((input, inputIndex) => {
+      const key = getFunctionInputKey(functionInfo, input, inputIndex);
+      let value = form[key];
+      if (input.baseType === 'array') {
+        value = JSON.parse(value);
+      } else if (input.type === 'bool') {
+        if (value === 'true' || value === '1' || value === '0x1' || value === '0x01' || value === '0x0001') {
+          value = 1;
+        } else {
+          value = 0;
+        }
+      }
+      return value;
+    });
+
+    let result;
+    if (functionInfo.stateMutability === 'view' || functionInfo.stateMutability === 'pure') {
+      try {
+        const returned = await contractFunction(...args);
+        handleForm(returned);
+        result = tryToDisplayAsText(returned);
+      } catch (err) {
+        console.error(err);
+      }
+    } else {
+      const overrides = {};
+      if (txValue) {
+        overrides.value = txValue; // ethers.utils.parseEther()
+      }
+      if (gasPrice) {
+        overrides.gasPrice = gasPrice;
+      }
+      // Uncomment this if you want to skip the gas estimation for each transaction
+      // overrides.gasLimit = hexlify(1200000);
+
+      // console.log("Running with extras",extras)
+      const returned = await tx(contractFunction(...args, overrides));
+      handleForm(returned);
+      result = tryToDisplay(returned);
+    }
+
+    console.log('SETTING RESULT:', result);
+    setReturnValue(result);
+    triggerRefresh(true);
+  };
   const buttonIcon =
     functionInfo.type === 'call' ? (
-      <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+      <button
+        onClick={buttonAction}
+        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >
         Read
       </button>
     ) : (
-      <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+      <button
+        onClick={buttonAction}
+        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >
         Send
       </button>
     );
   inputs.push(
     <div style={{ cursor: 'pointer', margin: 2 }} key="goButton">
-      <Input
-        onChange={e => setReturnValue(e.target.value)}
-        defaultValue=""
-        bordered={false}
-        disabled
-        value={returnValue}
-        style={{ padding: 0 }}
-        prefix={
-          <div
-            style={{ width: 100, height: 30, margin: 0 }}
-            type="default"
-            onClick={async () => {
-              const args = functionInfo.inputs.map((input, inputIndex) => {
-                const key = getFunctionInputKey(functionInfo, input, inputIndex);
-                let value = form[key];
-                if (input.baseType === 'array') {
-                  value = JSON.parse(value);
-                } else if (input.type === 'bool') {
-                  if (value === 'true' || value === '1' || value === '0x1' || value === '0x01' || value === '0x0001') {
-                    value = 1;
-                  } else {
-                    value = 0;
-                  }
-                }
-                return value;
-              });
-
-              let result;
-              if (functionInfo.stateMutability === 'view' || functionInfo.stateMutability === 'pure') {
-                try {
-                  const returned = await contractFunction(...args);
-                  handleForm(returned);
-                  result = tryToDisplayAsText(returned);
-                } catch (err) {
-                  console.error(err);
-                }
-              } else {
-                const overrides = {};
-                if (txValue) {
-                  overrides.value = txValue; // ethers.utils.parseEther()
-                }
-                if (gasPrice) {
-                  overrides.gasPrice = gasPrice;
-                }
-                // Uncomment this if you want to skip the gas estimation for each transaction
-                // overrides.gasLimit = hexlify(1200000);
-
-                // console.log("Running with extras",extras)
-                const returned = await tx(contractFunction(...args, overrides));
-                handleForm(returned);
-                result = tryToDisplay(returned);
-              }
-
-              console.log('SETTING RESULT:', result);
-              setReturnValue(result);
-              triggerRefresh(true);
-            }}
-          >
-            {buttonIcon}
-          </div>
-        }
-      />
+      <div className="text-gray-900 dark:text-white">{returnValue}</div>
+      <div style={{ width: 100, height: 30, margin: 0 }} type="default">
+        {buttonIcon}
+      </div>
     </div>,
   );
 
