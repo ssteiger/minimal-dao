@@ -26,7 +26,7 @@ $ yarn start
 ![Minimal_DAO_02](./packages/react-app/public/screenshot_bright_02.png?raw=true 'Minimal_DAO_02')
 ![Minimal_DAO_03](./packages/react-app/public/screenshot_dark_01.png?raw=true 'Minimal_DAO_03')
 
-## Resoucres
+## Resources
 
 * [openzeppelin governance docs](https://docs.openzeppelin.com/contracts/4.x/api/governance)
 * [openzeppelin wizard](https://wizard.openzeppelin.com/)
