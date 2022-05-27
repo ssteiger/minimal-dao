@@ -1,6 +1,7 @@
 {
   "name": "@minimal-dao/monorepo",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
     "react-app:build": "yarn workspace @minimal-dao/react-app build --max-old-space-size=12288",
     "react-app:eject": "yarn workspace @minimal-dao/react-app eject",
