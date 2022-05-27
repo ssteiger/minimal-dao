@@ -1,5 +1,5 @@
 {
-   "solidity.packageDefaultDependenciesDirectory": "node_modules/@scaffold-eth/hardhat/node_modules/",
+   "solidity.packageDefaultDependenciesDirectory": "node_modules/@minimal-dao/hardhat/node_modules/",
    "solidity-va.test.defaultUnittestTemplate": "hardhat",
    "files.exclude": {
       "**/.git": true,
@@ -23,7 +23,7 @@
    },
    "explorerExclude.backup": null,
    "eslint.workingDirectories": [
-   
+
       { "directory": "packages/eth-hooks", "changeProcessCWD": true },
       { "directory": "packages/hardhat-ts", "changeProcessCWD": true },
       { "directory": "packages/vite-app-ts", "changeProcessCWD": true },
