@@ -17,6 +17,15 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   const { deployer } = await getNamedAccounts();
   const chainId = await getChainId();
 
+  await deploy("MyNFT", {
+    from: deployer,
+    // args: [],
+    log: true,
+    waitConfirmations: 1,
+  });
+
+  const MyToken = await ethers.getContract("MyNFT", deployer);
+
   /*
     uint256 minDelay,
     address[] memory proposers,
@@ -27,34 +36,33 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
     from: deployer,
     args: [1, [], []],
     log: true,
-    waitConfirmations: 5,
+    waitConfirmations: 1,
   });
 
-  await deploy("MyToken", {
-    from: deployer,
-    // args: [],
-    log: true,
-    waitConfirmations: 5,
-  });
-
-  // Getting a previously deployed contract
+  // getting a previously deployed contract
   const GovernanceTimeLock = await ethers.getContract(
     "GovernanceTimeLock",
     deployer
   );
 
-  const MyToken = await ethers.getContract("MyToken", deployer);
-
   await deploy("MyGovernor", {
     from: deployer,
     args: [MyToken.address, GovernanceTimeLock.address],
     log: true,
-    waitConfirmations: 5,
+    waitConfirmations: 1,
   });
 
   const MyGovernor = await ethers.getContract("MyGovernor", deployer);
 
-  /*  await YourContract.setPurpose("Hello");
+  await deploy("SimpleStorage", {
+    from: deployer,
+    // args: [],
+    log: true,
+    waitConfirmations: 1,
+  });
+
+  /*
+    await YourContract.setPurpose("Hello");
 
     To take ownership of yourContract using the ownable library uncomment next line and add the
     address you want to be the owner.
@@ -64,7 +72,7 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   */
 
   /*
-  //If you want to send value to an address from the deployer
+  // If you want to send value to an address from the deployer
   const deployerWallet = ethers.provider.getSigner()
   await deployerWallet.sendTransaction({
     to: "0x34aA3F359A9D614239015126635CE7732c18fDF3",
@@ -73,14 +81,14 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   */
 
   /*
-  //If you want to send some ETH to a contract on deploy (make your constructor payable!)
+  // If you want to send some ETH to a contract on deploy (make your constructor payable!)
   const yourContract = await deploy("YourContract", [], {
   value: ethers.utils.parseEther("0.05")
   });
   */
 
   /*
-  //If you want to link a library into your contract:
+  // If you want to link a library into your contract:
   // reference: https://github.com/austintgriffith/scaffold-eth/blob/using-libraries-example/packages/hardhat/scripts/deploy.js#L19
   const yourContract = await deploy("YourContract", [], {}, {
    LibraryName: **LibraryAddress**
