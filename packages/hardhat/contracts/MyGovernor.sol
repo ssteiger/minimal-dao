@@ -13,7 +13,7 @@ contract MyGovernor is Governor, GovernorSettings, GovernorCountingSimple, Gover
         Governor("MyGovernor")
         GovernorSettings(1 /* 1 block */, 45818 /* 1 week */, 1e18)
         GovernorVotes(_token)
-        GovernorVotesQuorumFraction(4)
+        GovernorVotesQuorumFraction(50)
     {}
 
     // The following functions are overrides required by Solidity.
