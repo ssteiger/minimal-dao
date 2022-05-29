@@ -113,7 +113,8 @@ export default function ProposalCreator({
       <br />
       <br />
       <p>
-        <b>IMPORTANT:</b> Each proposal can only be submitted once! No duplicate allowed!
+        <b>IMPORTANT:</b> Each proposal can only be submitted once! No duplicate allowed! - Anyone can create a
+        proposal, also non NFT holders.
       </p>
       <br />
       <br />

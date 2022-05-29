@@ -39,6 +39,7 @@ export default function Proposal({
     await writeContracts.MyGovernor.castVote(`${proposalId}`, support);
   };
 
+  /*
   const queueProposal = async () => {
     console.log('now queue proposal');
     console.log({ args });
@@ -47,6 +48,7 @@ export default function Proposal({
     console.log({ targets, values, calldatas, descriptionHash });
     await writeContracts.MyGovernor.queue(targets, values, calldatas, descriptionHash);
   };
+  */
 
   const executeProposal = async () => {
     console.log('now execute proposal');
@@ -78,7 +80,8 @@ export default function Proposal({
   return (
     <div className="font-normal text-gray-900 dark:text-white">
       <p style={{ marginBottom: 15 }}>proposal Id: {`${proposalId}`}</p>
-      <p>you have voted : {hasVoted ? 'yes' : 'no'}</p>
+      <p>proposal id as bytes32: {/*utils.formatBytes32String(`${proposalId}`)*/}</p>
+      <p>you have voted: {hasVoted ? 'yes' : 'no'}</p>
       <p>calldatas: {calldatas}</p>
       <p>description: {description}</p>
       <p>endBlock: {`${endBlock}`}</p>
@@ -137,16 +140,6 @@ export default function Proposal({
       <br />
       <br />
       proposalState: {proposalState}
-      <br />
-      <br />
-      Queue Proposal
-      <br />
-      <button
-        onClick={() => queueProposal()}
-        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-      >
-        Queue Proposal
-      </button>
       <br />
       <br />
       Execute Proposal

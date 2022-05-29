@@ -30,7 +30,6 @@ $ yarn start
 ## Resources
 
 * [openzeppelin governance docs](https://docs.openzeppelin.com/contracts/4.x/api/governance)
-* [the proposal lifecycle](https://docs.openzeppelin.com/contracts/4.x/governance#proposal_lifecycle)
 * [openzeppelin wizard](https://wizard.openzeppelin.com/)
 * [scaffold-eth](https://github.com/scaffold-eth/scaffold-eth)
 * [tally](https://www.tally.xyz/)

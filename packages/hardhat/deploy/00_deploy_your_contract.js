@@ -26,28 +26,9 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
 
   const MyToken = await ethers.getContract("MyNFT", deployer);
 
-  /*
-    uint256 minDelay,
-    address[] memory proposers,
-    address[] memory executors
-  */
-  await deploy("GovernanceTimeLock", {
-    // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
-    from: deployer,
-    args: [1, [], []],
-    log: true,
-    waitConfirmations: 1,
-  });
-
-  // getting a previously deployed contract
-  const GovernanceTimeLock = await ethers.getContract(
-    "GovernanceTimeLock",
-    deployer
-  );
-
   await deploy("MyGovernor", {
     from: deployer,
-    args: [MyToken.address, GovernanceTimeLock.address],
+    args: [MyToken.address],
     log: true,
     waitConfirmations: 1,
   });

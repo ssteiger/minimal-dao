@@ -244,7 +244,6 @@ function App(props) {
     { name: 'Vote on Proposals', href: '/vote-on-proposals', icon: SparklesIcon },
     { name: 'Proposal Creator', href: '/create-proposal', icon: CodeIcon },
     { name: 'MyNFT', href: '/my-nft', icon: CodeIcon },
-    { name: 'GovernanceTimeLock', href: '/governance-time-lock', icon: CodeIcon },
     { name: 'MyGovernor', href: '/my-governor', icon: CodeIcon },
     { name: 'Hints', href: '/hints', icon: SparklesIcon },
     { name: 'ExampleUI', href: '/exampleui', icon: TemplateIcon },
@@ -470,17 +469,6 @@ function App(props) {
                       contractConfig={contractConfig}
                     />
                   </Route>
-                  <Route exact path="/governance-time-lock">
-                    <Contract
-                      name="GovernanceTimeLock"
-                      price={price}
-                      signer={userSigner}
-                      provider={localProvider}
-                      address={address}
-                      blockExplorer={blockExplorer}
-                      contractConfig={contractConfig}
-                    />
-                  </Route>
                   <Route exact path="/my-governor">
                     <Contract
                       name="MyGovernor"
@@ -493,32 +481,6 @@ function App(props) {
                     />
                   </Route>
 
-                  <Route exact path="/debug">
-                    {/*
-                        🎛 this scaffolding is full of commonly used components
-                        this <Contract/> component will automatically parse your ABI
-                        and give you a form to interact with it locally
-                    */}
-
-                    <Contract
-                      name="GovernanceTimeLock"
-                      price={price}
-                      signer={userSigner}
-                      provider={localProvider}
-                      address={address}
-                      blockExplorer={blockExplorer}
-                      contractConfig={contractConfig}
-                    />
-                    <Contract
-                      name="MyGovernor"
-                      price={price}
-                      signer={userSigner}
-                      provider={localProvider}
-                      address={address}
-                      blockExplorer={blockExplorer}
-                      contractConfig={contractConfig}
-                    />
-                  </Route>
                   <Route path="/hints">
                     <Hints
                       address={address}
