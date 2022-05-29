@@ -80,7 +80,6 @@ export default function Proposal({
   return (
     <div className="font-normal text-gray-900 dark:text-white">
       <p style={{ marginBottom: 15 }}>proposal Id: {`${proposalId}`}</p>
-      <p>proposal id as bytes32: {/*utils.formatBytes32String(`${proposalId}`)*/}</p>
       <p>you have voted: {hasVoted ? 'yes' : 'no'}</p>
       <p>calldatas: {calldatas}</p>
       <p>description: {description}</p>
