@@ -29,7 +29,7 @@ import externalContracts from './contracts/external_contracts';
 // contracts
 import deployedContracts from './contracts/hardhat_contracts.json';
 import { Transactor, Web3ModalSetup, classNames } from './helpers';
-import { Home, ExampleUI, Hints, Subgraph } from './views';
+import { Home, ExampleUI, ProposalCreator, ProposalsOverview, VoteOnProposals, Hints, Subgraph } from './views';
 import { useStaticJsonRPC } from './hooks';
 
 import { Dialog, Transition } from '@headlessui/react';
@@ -45,30 +45,11 @@ import {
 } from '@heroicons/react/outline';
 
 const { ethers } = require('ethers');
-/*
-    Welcome to 🏗 scaffold-eth !
-
-    Code:
-    https://github.com/scaffold-eth/scaffold-eth
-
-    Support:
-    https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA
-    or DM @austingriffith on twitter or telegram
-
-    You should get your own Alchemy.com & Infura.io ID and put it in `constants.js`
-    (this is your connection to the main Ethereum network for ENS etc.)
-
-
-    🌏 EXTERNAL CONTRACTS:
-    You can also bring in contract artifacts in `constants.js`
-    (and then use the `useExternalContractLoader()` hook!)
-*/
 
 /// 📡 What chain are your contracts deployed to?
 const initialNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
-// 😬 Sorry for all the console logging
-const DEBUG = true;
+const DEBUG = false;
 const NETWORKCHECK = true;
 const USE_BURNER_WALLET = true; // toggle burner wallet feature
 const USE_NETWORK_SELECTOR = true;
@@ -78,7 +59,7 @@ const web3Modal = Web3ModalSetup();
 // 🛰 providers
 const providers = [
   'https://eth-mainnet.gateway.pokt.network/v1/lb/611156b4a585a20035148406',
-  `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_KEY}`,
+  //`https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_KEY}`,
   'https://rpc.scaffoldeth.io:48544',
 ];
 
@@ -186,9 +167,7 @@ function App(props) {
   console.log("🏷 Resolved austingriffith.eth as:",addressFromENS)
   */
 
-  //
   // 🧫 DEBUG 👨🏻‍🔬
-  //
   useEffect(() => {
     if (
       DEBUG &&
@@ -261,7 +240,10 @@ function App(props) {
   const navigation = [
     { name: 'Home', href: '/', icon: HomeIcon },
     //{ name: 'Debug Contracts', href: '/debug', icon: CodeIcon },
-    { name: 'MyToken', href: '/my-token', icon: CodeIcon },
+    { name: 'Proposals Overview', href: '/proposals-overview', icon: SparklesIcon },
+    { name: 'Vote on Proposals', href: '/vote-on-proposals', icon: SparklesIcon },
+    { name: 'Proposal Creator', href: '/create-proposal', icon: CodeIcon },
+    { name: 'MyNFT', href: '/my-nft', icon: CodeIcon },
     { name: 'GovernanceTimeLock', href: '/governance-time-lock', icon: CodeIcon },
     { name: 'MyGovernor', href: '/my-governor', icon: CodeIcon },
     { name: 'Hints', href: '/hints', icon: SparklesIcon },
@@ -438,9 +420,48 @@ function App(props) {
                   <Route exact path="/">
                     <Home yourLocalBalance={yourLocalBalance} readContracts={readContracts} />
                   </Route>
-                  <Route exact path="/my-token">
+                  <Route exact path="/proposals-overview">
+                    <ProposalsOverview
+                      price={price}
+                      signer={userSigner}
+                      localProvider={localProvider}
+                      address={address}
+                      blockExplorer={blockExplorer}
+                      contractConfig={contractConfig}
+                      useContractReader={useContractReader}
+                      readContracts={readContracts}
+                      writeContracts={writeContracts}
+                    />
+                  </Route>
+                  <Route exact path="/create-proposal">
+                    <ProposalCreator
+                      price={price}
+                      signer={userSigner}
+                      localProvider={localProvider}
+                      address={address}
+                      blockExplorer={blockExplorer}
+                      contractConfig={contractConfig}
+                      useContractReader={useContractReader}
+                      readContracts={readContracts}
+                      writeContracts={writeContracts}
+                    />
+                  </Route>
+                  <Route exact path="/vote-on-proposals">
+                    <VoteOnProposals
+                      price={price}
+                      signer={userSigner}
+                      localProvider={localProvider}
+                      address={address}
+                      blockExplorer={blockExplorer}
+                      contractConfig={contractConfig}
+                      useContractReader={useContractReader}
+                      readContracts={readContracts}
+                      writeContracts={writeContracts}
+                    />
+                  </Route>
+                  <Route exact path="/my-nft">
                     <Contract
-                      name="MyToken"
+                      name="MyNFT"
                       price={price}
                       signer={userSigner}
                       provider={localProvider}
