@@ -1,7 +1,8 @@
 # Minimal NFT DAO on Ethereum
 
-Minimal Ethereum DAO using an ERC721 NFT as membership + vote.
-Built with scaffold-eth and Tailwind CSS.
+Minimal Ethereum DAO using ERC721 NFTs for membership tracking and voting.
+
+Built using scaffold-eth and Tailwind CSS.
 
 ## Getting started
 
