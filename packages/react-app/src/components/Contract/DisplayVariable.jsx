@@ -33,7 +33,7 @@ const DisplayVariable = ({ contractFunction, functionInfo, refreshRequired, trig
           <div
             className="inline-flex items-center px-3 py-0.5 rounded-full text-base font-normal bg-blue-100 text-gray-800 dark:bg-gray-900 dark:text-white"
             style={{
-              fontSize: 14,
+              fontSize: 16,
               marginRight: 15,
               float: 'right',
             }}
