@@ -56,7 +56,7 @@ export default function Balance(props) {
 
   return (
     <span
-      className={classNames(props.textSize ? props.textSize : 'text-2xl', 'cursor-pointer px-2 align-middle')}
+      className={classNames(props.textSize ? props.textSize : 'text-lg', 'cursor-pointer px-2 align-middle')}
       onClick={() => {
         setDollarMode(!dollarMode);
       }}

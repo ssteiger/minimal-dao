@@ -116,21 +116,13 @@ export default function Contract({
 
   return (
     <div style={{ margin: 'auto', width: '70vw' }}>
-      <div
-        className="font-normal text-gray-900 dark:text-white"
-        title={
-          <div style={{ fontSize: 24 }}>
-            {name}
-            <div style={{ float: 'right' }}>
-              <Address value={address} />
-              <Balance address={address} provider={provider} price={price} />
-            </div>
-          </div>
-        }
-        style={{ marginTop: 25, width: '100%' }}
-        loading={contractDisplay && contractDisplay.length <= 0}
-      >
-        {contractIsDeployed ? contractDisplay : noContractDisplay}
+      <div className="text-gray-900 dark:text-white">
+        <div className="flex justify-around py-5">
+          <div className="flex text-lg">{name}</div>
+          <Address value={address} size="long" />
+          <Balance address={address} provider={provider} price={price} />
+        </div>
+        <div style={{ float: 'right', width: '100%' }}>{contractIsDeployed ? contractDisplay : noContractDisplay}</div>
       </div>
     </div>
   );
